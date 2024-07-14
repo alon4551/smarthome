@@ -2,7 +2,7 @@ import { TextField, Button } from '@mui/material'
 import React, { useContext, useState } from 'react'
 import { Rooms } from '../../App'
 function Room() {
-    const [rooms, setRooms] = useContext(Rooms)
+    const {rooms, setRooms} = useContext(Rooms)
     const [valid, setValid] = useState(true)
     const [name, setName] = useState('')
     console.log(rooms)

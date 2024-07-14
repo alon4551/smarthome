@@ -4,14 +4,20 @@ import Radio from '@mui/material/Radio'
 import Room from './room'
 import Device from './device'
 import Button from '@mui/material/Button'
-import { FormControl, FormControlLabel, RadioGroup, Typography } from '@mui/material'
+import { FormControl, FormControlLabel, RadioGroup, Typography, Box } from '@mui/material'
 
 function Add() {
   const [status, setStatus] = useState('room')
- 
+
   return (
-    <>
-      <Typography variant='h3'>
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh'
+    }}>
+      <Typography variant='h4'>
         Wellcome to the Add Page
       </Typography>
       <FormControl>
@@ -30,7 +36,7 @@ function Add() {
         <Device />
       }
 
-    </>
+    </Box>
   )
 }
 

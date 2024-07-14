@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react'
 import { Box, List, ListItem, ListItemText } from '@mui/material'
 import { Rooms } from '../../App'
 function RoomsPage() {
-    const room = useState({})
-    const [rooms] = useContext(Rooms)
+    const index = useState(0)
+    const {rooms} = useContext(Rooms)
     return (
         <Box>
             <List sx={{
@@ -18,7 +18,6 @@ function RoomsPage() {
             }}
                 subheader={<li />} >
                 {rooms.map((r) => {
-                    console.log(r)
                     return (
                         <li key={r.name}>
                             <ul>

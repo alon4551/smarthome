@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Rooms } from '../../App'
 import { FormControl, Select, MenuItem, TextField, Button } from '@mui/material'
 function Device() {
-    const rooms = useContext(Rooms)
+    const { rooms, setRooms } = useContext(Rooms)
     const [name, SetName] = useState('')
     const [valid, setValid] = useState(true)
     const [index, setIndex] = useState(0)
@@ -20,9 +20,9 @@ function Device() {
     }
     const addDevice = () => {
         rooms[index].devices.push({
-            name: name,
-            power: false
+            name: name
         })
+        setRooms([...rooms])
         document.querySelector('#deviceName').value = ''
         SetName('')
 

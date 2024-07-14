@@ -5,27 +5,15 @@ import Add from './pages/Add'
 import RoomsPage from './pages/rooms';
 export const Rooms = createContext([])
 function App() {
-
+  const [rooms, setRooms] = useState([])
   return (
     <>
 
-      <Rooms.Provider value={[{
-        name: 'room1',
-        lights: false,
-        devices: [{
-          name: 'radio',
-          power: false
-        }]
-      }, {
-        name: 'room2',
-        lights: false,
-        devices: []
-      }]}>
+      <Rooms.Provider value={{ rooms, setRooms }}>
         <Navbar />
         <Routes>
           <Route path='/' element={<></>} />
           <Route path='/add' element={<Add />} />
-          <Route path='/rooms' element={<RoomsPage />} />
         </Routes>
 
       </Rooms.Provider>

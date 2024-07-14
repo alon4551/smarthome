@@ -8,20 +8,20 @@ import Button from '@mui/material/Button';
 import NavItem from './navItem';
 import { useNavigate } from 'react-router-dom';
 function navbar() {
-    const [rooms] = useContext(Rooms)
+    const { rooms, setRooms } = useContext(Rooms)
     const navigate = useNavigate()
     return (
-        <Box sx={{ flexGrow: 1 }} >
+        <Box  >
             <AppBar position="static">
                 <Toolbar>
-                    <Toolbar sx={{ flexGrow: 2 }}>
-                        <Button color='inherit' onClick={() => navigate('/rooms')} >Rooms</Button>
-                        {/*rooms.map((room, index) => {
-                            return (<NavItem key={index} room={room} />)
-                        })*/}
-                    </Toolbar>
-                    <Button color="inherit" onClick={() => navigate('/add')} sx={{ float: 'right' }} >Add Room</Button>
+
+                    <Button color="inherit" onClick={() => navigate('/add')} sx={{ float: 'right' }} >Add</Button>
                     <Button color='inherit' onClick={() => navigate('/')} sx={{ float: 'right' }} >Home</Button>
+                    <Toolbar sx={{ flexGrow: 1 }}>
+                        {rooms.map((room, index) => {
+                            return (<NavItem key={index} room={room} />)
+                        })}
+                    </Toolbar>
                 </Toolbar>
             </AppBar>
         </Box>
