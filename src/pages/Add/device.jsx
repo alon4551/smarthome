@@ -20,7 +20,8 @@ function Device() {
     }
     const addDevice = () => {
         rooms[index].devices.push({
-            name: name
+            name: name,
+            power: false
         })
         setRooms([...rooms])
         document.querySelector('#deviceName').value = ''

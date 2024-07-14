@@ -19,7 +19,7 @@ function navbar() {
                     <Button color='inherit' onClick={() => navigate('/')} sx={{ float: 'right' }} >Home</Button>
                     <Toolbar sx={{ flexGrow: 1 }}>
                         {rooms.map((room, index) => {
-                            return (<NavItem key={index} room={room} />)
+                            return (<NavItem key={index} room={room} index={index} />)
                         })}
                     </Toolbar>
                 </Toolbar>

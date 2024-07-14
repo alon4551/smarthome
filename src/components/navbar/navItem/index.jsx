@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Typography, Switch } from '@mui/material'
 import Menu from '@mui/material/Menu'
 import { MenuButton } from '@mui/base/MenuButton';
 import { Dropdown } from '@mui/base/Dropdown';
 import MenuItem from '@mui/material/MenuItem'
+import { Rooms } from '../../../App';
 function NavItem(props) {
+    const { rooms, setRooms } = useContext(Rooms)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -13,6 +15,11 @@ function NavItem(props) {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const power = (index, power) => {
+        console.log(power)
+        rooms[props.index].devices[index].power = !power
+        setRooms([...rooms])
+    }
     return (
         <>
             <Typography key={props.room.name}
@@ -47,13 +54,13 @@ function NavItem(props) {
                 MenuListProps={{
                     'aria-labelledby': 'basic-button',
                 }}>
-                {props.room.devices.length == 0 ? <MenuItem>None</MenuItem>:<></>}
+                {props.room.devices.length == 0 ? <MenuItem>None</MenuItem> : <></>}
                 {
 
-                    props.room.devices.map((device) => {
+                    props.room.devices.map((device, index) => {
                         return (
                             <MenuItem key={device.name}>
-                                {device.name}
+                                {device.name}<Switch onChange={() => power(index, device.power)} checked={device.power} />
                             </MenuItem>
                         )
                     })
